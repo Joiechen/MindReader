@@ -1,0 +1,21 @@
+[
+  {
+    "id": "attention_focus_band",
+    "description": "Classify attention focus scores into actionable tiers.",
+    "targets": ["scores.attention_focus"],
+    "thresholds": [
+      {"label": "Excellent", "min": 85, "max": 100, "recommendation": "Reinforce existing focus routines."},
+      {"label": "Developing", "min": 70, "max": 84, "recommendation": "Introduce spaced-focus exercises 3x per week."},
+      {"label": "Needs Support", "min": 0, "max": 69, "recommendation": "Schedule intensive attention coaching and monitor weekly."}
+    ]
+  },
+  {
+    "id": "stress_resilience_delta",
+    "description": "Flag stress resilience drops greater than 10 points compared to previous assessment.",
+    "targets": ["derived_metrics.stress_resilience_delta"],
+    "conditions": {
+      "lt": -10
+    },
+    "recommendation": "Provide immediate stress-management intervention and follow-up call."
+  }
+]
