@@ -15,7 +15,7 @@ discussion with clients through多轮对话.
   prototype) to produce empathetic narratives.
 - **Conversation orchestration** – maintain对话会话 state so clients can continue to ask questions
   and receive consistent answers grounded in their report.
-- **Web 演示前端** – 通过 FastAPI 提供的单页界面，支持在线载入示例报告、触发分析以及与顾问助手对话。
+- **Web 演示前端** – 内置 HTTP 服务提供的单页界面，支持在线载入示例报告、触发分析以及与顾问助手对话。
 
 ## Repository Layout
 
@@ -27,15 +27,14 @@ discussion with clients through多轮对话.
 
 ## Getting Started
 
-1. Ensure Python 3.11+ is available并安装依赖：
+1. 确认安装了 Python 3.11+。本演示仅依赖标准库，可选地创建虚拟环境以保持隔离：
    ```bash
    python -m venv .venv
    source .venv/bin/activate  # Windows 使用 .venv\Scripts\activate
-   pip install -r requirements.txt
    ```
 2. 启动交互式 API + 前端演示：
    ```bash
-   uvicorn backend.app.api:app --reload
+   python -m backend.app.api
    ```
 3. 浏览器访问 <http://localhost:8000>，即可载入示例报告、运行规则分析并体验多轮对话。
 4. 若仅需命令行演示，可继续运行：

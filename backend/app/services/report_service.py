@@ -41,7 +41,10 @@ class ReportService:
         if "assessment_type" not in payload:
             raise ValueError("report payload must include assessment_type")
 
-        participant = Participant(**payload["participant"])
+        try:
+            participant = Participant(**payload["participant"])
+        except TypeError as exc:
+            raise ValueError("participant information is incomplete") from exc
         try:
             assessment_date = datetime.fromisoformat(payload["assessment_date"]).date()
         except ValueError as exc:  # pragma: no cover - defensive parsing guard

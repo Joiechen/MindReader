@@ -21,10 +21,10 @@ interface.
 ### Web 界面 + API
 
 ```bash
-uvicorn backend.app.api:app --reload
+python -m backend.app.api
 ```
 
-访问 <http://localhost:8000> 体验以下流程：
+服务器会在 <http://localhost:8000> 启动，随后即可：
 
 1. 载入仓库附带的示例报告或粘贴自定义 JSON。
 2. 点击“运行分析”查看规则命中和 ChatGPT5 叙事摘要。
