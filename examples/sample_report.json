@@ -1,0 +1,32 @@
+{
+  "report_id": "TQC-2024-0001",
+  "participant": {
+    "name": "Li Na",
+    "age": 32,
+    "gender": "F",
+    "occupation": "Product Manager"
+  },
+  "assessment_date": "2024-05-18",
+  "assessment_type": "TQC-Core-Assessment",
+  "scores": {
+    "attention_focus": 72,
+    "memory_retention": 88,
+    "processing_speed": 81
+  },
+  "derived_metrics": {
+    "cognitive_balance": 77,
+    "stress_resilience_delta": -14
+  },
+  "norm_reference": {
+    "cohort": "Urban knowledge workers",
+    "percentile_rank": {
+      "attention_focus": 58,
+      "memory_retention": 82,
+      "processing_speed": 74
+    }
+  },
+  "source_metadata": {
+    "uploaded_by": "coach_zhao",
+    "uploaded_at": "2024-05-20T10:15:00+08:00"
+  }
+}

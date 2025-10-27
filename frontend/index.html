@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MindReader TQC 报告演示</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <header class="page-header">
+      <h1>MindReader – TQC 报告智能演示</h1>
+      <p>上传或编辑报告数据，立即查看规则分析并与顾问助手对话。</p>
+    </header>
+    <main class="page-grid">
+      <section class="panel" aria-labelledby="report-section">
+        <div class="panel-header">
+          <h2 id="report-section">报告输入</h2>
+          <div class="panel-actions">
+            <button id="load-sample" type="button">载入示例</button>
+            <button id="run-analysis" type="button" class="primary">运行分析</button>
+          </div>
+        </div>
+        <p class="panel-subtitle">
+          将 TQC 基础报告转换为 JSON 并粘贴至下方，或直接使用仓库内的示例。
+        </p>
+        <textarea id="report-editor" spellcheck="false" aria-label="报告 JSON"></textarea>
+        <p class="hint">提示：前端不会持久化任何内容，所有分析请求均在本地服务器完成。</p>
+      </section>
+
+      <section class="panel" aria-labelledby="analysis-section">
+        <div class="panel-header">
+          <h2 id="analysis-section">分析结果</h2>
+        </div>
+        <div id="analysis-output" class="analysis-output" role="status">
+          <p class="empty">请先运行分析，系统会展示规则命中与叙事摘要。</p>
+        </div>
+      </section>
+
+      <section class="panel chat" aria-labelledby="chat-section">
+        <div class="panel-header">
+          <h2 id="chat-section">对话助手</h2>
+        </div>
+        <div id="chat-history" class="chat-history" aria-live="polite"></div>
+        <form id="chat-form" class="chat-form" autocomplete="off">
+          <label class="sr-only" for="chat-input">向顾问助手提问</label>
+          <input id="chat-input" type="text" placeholder="例如：注意力指标偏低意味着什么？" />
+          <button type="submit" class="primary">发送</button>
+        </form>
+        <p class="hint">系统会复用当前报告的分析结果，必要时可升级调用 ChatGPT5 引擎。</p>
+      </section>
+    </main>
+    <template id="message-template">
+      <div class="message">
+        <div class="message-role"></div>
+        <div class="message-content"></div>
+      </div>
+    </template>
+    <script type="module" src="/static/app.js"></script>
+  </body>
+</html>
