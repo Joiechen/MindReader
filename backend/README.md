@@ -16,17 +16,31 @@ interface.
 - `examples/sample_report.json` – example TQC report payload.
 - `config/rules/default_rules.json` – baseline rule definitions.
 
-## Running the Demo
+## Running the Demos
+
+### Web 界面 + API
+
+```bash
+uvicorn backend.app.api:app --reload
+```
+
+访问 <http://localhost:8000> 体验以下流程：
+
+1. 载入仓库附带的示例报告或粘贴自定义 JSON。
+2. 点击“运行分析”查看规则命中和 ChatGPT5 叙事摘要。
+3. 在对话区域继续向顾问助手提问。
+
+### 命令行演示
 
 ```bash
 python -m backend.app.main
 ```
 
-The demo will:
+命令行模式会：
 
-1. Load the sample report payload.
-2. Evaluate rules and produce a mocked ChatGPT5 narrative.
-3. Start a conversation session and respond to an example follow-up question.
+1. 加载示例报告。
+2. 输出规则状态与模拟叙事。
+3. 启动一次会话并打印示例问答。
 
 ## Extending the Prototype
 

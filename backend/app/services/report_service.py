@@ -27,8 +27,25 @@ class ReportService:
         """Load a report from JSON file."""
 
         payload = json.loads(path.read_text(encoding="utf-8"))
+        return self.parse_report(payload)
+
+    def parse_report(self, payload: Dict[str, Any]) -> TqcReport:
+        """Create a ``TqcReport`` instance from a dictionary payload."""
+
+        if "participant" not in payload:
+            raise ValueError("report payload must include participant information")
+        if "report_id" not in payload:
+            raise ValueError("report payload must include report_id")
+        if "assessment_date" not in payload:
+            raise ValueError("report payload must include assessment_date")
+        if "assessment_type" not in payload:
+            raise ValueError("report payload must include assessment_type")
+
         participant = Participant(**payload["participant"])
-        assessment_date = datetime.fromisoformat(payload["assessment_date"]).date()
+        try:
+            assessment_date = datetime.fromisoformat(payload["assessment_date"]).date()
+        except ValueError as exc:  # pragma: no cover - defensive parsing guard
+            raise ValueError("assessment_date must be ISO formatted (YYYY-MM-DD)") from exc
         return TqcReport(
             report_id=payload["report_id"],
             participant=participant,
